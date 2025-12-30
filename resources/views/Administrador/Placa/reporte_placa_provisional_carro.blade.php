@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Placa Proviosnal</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @font-face {
+            font-family: Rounded;
+            src: url('../fonts/Rounded_Elegance.ttf');
+        }
+
+
+        body {
+            font-family: Rounded;
+        }
+
+        .titulo1 {
+            font-size: 16px;
+            font-sight: bold;
+            color: #031b4e;
+        }
+
+        .titulo2 {
+            font-size: 14px;
+            font-weight: bold;
+            color: #031b4e;
+        }
+
+        .titulo3 {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .titulo1-tam-ecua {
+            font-size: 32px;
+
+        }
+
+        .titulo1-tam-placa {
+            font-size: 165px;
+        }
+
+        .titulo2-tam {
+            font-size: 14px;
+
+        }
+
+        .titulo3-tam {
+            font-size: 12px;
+            color: rgb(0, 0, 0);
+        }
+
+        .color-thead {
+            background: #009ee2;
+            color: #fff;
+        }
+
+        .img-logo {
+            width: 120px !important;
+            height: 70px !important;
+            margin-top: 0px !important;
+        }
+
+        .img-logo-transito {
+            width: 100px !important;
+            height: 90px !important;
+            margin-top: 0px !important;
+        }
+
+        .justificar {
+            text-align: justify !important;
+        }
+
+        .border-div-pl {
+            border: 0.5px solid #000;
+        }
+
+
+        .titulo2-tam-d {
+            font-size: 72px;
+            font-weight: normal;
+        }
+
+        .img-logo-transito-pla {
+            width: 150px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="table-responsive border-div-pl">
+        <table width="100%" align="center" border="0" class="table tb table-tarea-m table-bordered ">
+            <tr>
+                <td width="20%" align="right"><strong><img
+                            src="{{ public_path('Imagenes/dist/logo/ANT-ecuador-logo.png') }}"
+                            class=" img-logo-transito-pla main-logo" alt="logo"></img></strong></td>
+                <td width="25%" align="left"><strong><img
+                            src="{{ public_path('Imagenes/dist/logo/logotipo-manta-ecuador.jpg') }}"
+                            class=" img-logo-transito-pla main-logo" alt="logo"></img></strong></td>
+                <td width="10%" align="center"><strong class="titulo1-tam-ecua">ECUADOR</strong></td>
+                <td width="35%" align="right"><strong><img src="{{ public_path('Imagenes/dist/logo/movilidad.png') }}"
+                            class="img-logo-transito-pla main-logo" alt="logo"></img></strong></td>
+                <td width="5%" align="center"><strong class="titulo2-tam-d">D</strong></td>
+            </tr>
+            <tr>
+                <td width="20%" align="center" colspan=5 class="titulo1-tam-placa">
+                    <strong>{{$data->placaActual}}</strong>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="table-responsive border-div-pl">
+        <table width="100%" align="center" border="3" class="table tb table-tarea-m table-bordered titulo3-tam interno">
+            <tr>
+                <td width="20%" align="left" class="table-responsive border-div-pl"><strong>PROVINCIA:</strong> </td>
+                <td width="20%" align="left" class="table-responsive border-div-pl">MANABI </td>
+                <td width="20%" align="left" class="table-responsive border-div-pl"><strong>FECHA TRÁMITE:</strong>
+                </td>
+                <td width="20%" align="left" class="table-responsive border-div-pl">{{$fecha_tramite}} </td>
+                <td width="20%" align="center" class="table-responsive border-div-pl" rowspan="5">
+                    <strong><img src="data:image/png;base64,{{ $qr_placa }}" alt=""></strong>
+                </td>
+            </tr>
+            <tr>
+                <td width="20%" align="left" class="table-responsive border-div-pl"><strong>OFICINA DE
+
+                        MATRICULACIÓN:</strong> </td>
+                <td width="20%" align="left" class="table-responsive border-div-pl">MANTA </td>
+                <td width="20%" align="left" class="table-responsive border-div-pl"><strong>VÁLIDO HASTA:</strong> </td>
+                <td width="20%" align="left" class="table-responsive border-div-pl">{{$fecha_valida}} </td>
+            </tr>
+            <tr>
+                <td width="20%" align="left" class="table-responsive border-div-pl"><strong>PROPIETARIO:</strong> </td>
+                <td width="60%" align="left" class="table-responsive border-div-pl" colspan=3>
+                    {{$data->propietario}}
+                </td>
+            </tr>
+
+            <tr>
+                <td width="20%" align="left" class="table-responsive border-div-pl"><strong>SERVICIO:</strong> </td>
+                @if($data->tipoServicio == "PAR")
+                <td width="65%" align="left" class="table-responsive border-div-pl" colspan="3">
+                    PARTICULAR
+                </td>
+                @elseif($data->tipoServicio == "PUB")
+                <td width="65%" align="left" class="table-responsive border-div-pl" colspan="3">
+                    TRANSPORTE PÚBLICO
+                </td>
+                @elseif($data->tipoServicio == "COM")
+                <td width="65%" align="left" class="table-responsive border-div-pl" colspan="3">
+                    COMERCIAL
+                </td>
+                @elseif($data->tipoServicio == "CPR")
+                <td width="65%" align="left" class="table-responsive border-div-pl" colspan="3">
+                    CUENTA PROPIA
+                </td>
+                @endif
+
+            </tr>
+            <tr>
+                <td width="20%" align="left" class="table-responsive border-div-pl"><strong>DIGITADOR:</strong> </td>
+                <td width="60%" align="left" class="table-responsive border-div-pl" colspan=3>{{$usuario}} </td>
+            </tr>
+        </table>
+    </div>
+
+    <p class="justificar">La resolución N° 093-DIR-2021-ANT en "REFORMA AL REGLAMENTO DE PROCEDIMIENTOS Y REQUISITOS
+        PARA LA MATRICULACIÓN
+        VEHICULAR" en
+        su Art. 29.- tipifica, en los casos de que no sea posible la entrega de una placa metálica por la entidad
+        competente, se otorgará por excepcionalidad una placa
+        provisional que contendrá la misma serie alfa númerica de la definitiva y tendrá la vigencia de hasta 120 días
+        renovables en casos excepcionales.</p>
+
+    <p class="justificar">Esta placa provisional conteniene información que puede ser validada por un agente de control
+        a través de su
+        código QR.</p>
+
+    <script>
+        var h = $("#txt-hora").val().split('.')
+        var hora = h[0]
+        $("#hora").val(hora)
+    </script>
+</body>
+
+</html>

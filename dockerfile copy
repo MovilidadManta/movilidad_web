@@ -1,0 +1,39 @@
+# Definir la imagen base mínima de PHP con FPM
+FROM php:8.0-fpm-alpine3.15
+
+# Usar un espejo alternativo para apk
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
+
+# Actualizar índices de paquetes y luego instalar dependencias necesarias
+RUN apk update && \
+    apk --no-cache add bash git openssh-client openssl supervisor libzip-dev zip unzip ghostscript postgresql-dev curl imagemagick imagemagick-dev autoconf g++ make freetype-dev libjpeg-turbo-dev libpng-dev && \
+    docker-php-ext-configure gd --with-freetype --with-jpeg && \
+    docker-php-ext-install gd pdo_pgsql bcmath zip && \
+    pecl install imagick && \
+    docker-php-ext-enable imagick
+
+# Configurar PHP
+RUN echo "memory_limit = 256M" > /usr/local/etc/php/conf.d/memory-limit.ini && \
+    echo "post_max_size = 0" > /usr/local/etc/php/conf.d/uploads.ini && \
+    echo "upload_max_filesize = 0" >> /usr/local/etc/php/conf.d/uploads.ini
+
+# Instalar Composer (administrador de dependencias de PHP)
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# Crear un directorio para la aplicación
+WORKDIR /var/www
+
+# Copiar archivos de la aplicación
+COPY . /var/www
+
+# Instalar dependencias de Composer
+#RUN composer install --no-interaction --no-scripts --no-progress --prefer-dist
+
+# Establecer permisos adecuados en el directorio de trabajo
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+
+# Exponer el puerto 9000 para PHP-FPM
+EXPOSE 9000
+
+# Iniciar PHP-FPM
+CMD ["php-fpm"]

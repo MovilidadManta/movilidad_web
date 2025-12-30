@@ -1,0 +1,245 @@
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (1,1,4,1, 9, 4, 2023, 'AGENTE CIVIL DE TRÁNSITO','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (2,2,4,1, 18, 4, 2023, 'AGENTE CIVIL DE TRÁNSITO','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (3,3,4,1, 6, 4, 2023, 'AGENTE CONTROL MUNICIPAL','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (4,4,4,1, 9, 4, 2023, 'AGENTE DE TRÁNSITO 1','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (5,5,4,1, 26, 6, 2023, 'AGENTE OPERATIVO','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (6,6,4,1, 26, 6, 2023, 'AGENTE OPERATIVO LOEP','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (7,7,4,1, 26, 6, 2023, 'AGENTE OPERATIVO CT','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (8,8,4,1, 9, 4, 2023, 'AGENTE OPERATIVO CT','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (9,9,2,1,9, 4, 2023, 'AGENTE OPERATICO CT','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (10,10,4,1,26, 6, 2023, 'AGENTE DE CONTROL - LOEP','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (11,11,4,1,10, 3, 2023, 'ANALISTA  DE PLANIFICACION','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (12,12,4,1,9, 4, 2023, 'ANALISTA 4 DE TRANSPORTE TERRESTRE, TRÁNSITO Y SEGURIDAD VIAL','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (13,13,4,1,9, 4, 2023, 'ANALISTA DE ARCHIVO','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (14,14,4,1,10, 3, 2023, 'ANALISTA DE PLANIFICACIÓN','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (15,15,4,1,20, 1, 2023, 'ANALISTA DE BIENES','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (16,16,4,1,19, 1, 2023, 'ANALISTA DE COMUNICACIÓN','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (16,16,4,1,19, 1, 2023, 'ANALISTA DE COMUNICACIÓN','15:47:42+00:00','15:47:42+00:00');
+
+
+
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (15,15,4,1,20, 1, 2023, 'ANALISTA DE PATROCINIO','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (16,16,4,1,19,1, 2023, 'ANALISTA JURIDICO ','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (17,17,4,1,19,1, 2023, 'ANALISTA JURIDICO 2','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (18,18,2,1,19,1, 2023, 'DIRECTOR JURIDICO','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (19,19,3,1,20,1, 2023, 'SUB DIRECTORA DE PATROCINIO JURIDICO','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (21,20,4,1,25,6, 2023, 'ANALISTA DE MARKETING','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (18, 20, 4,1, 25, 6, 2023, 'ANALISTA DE NOMINA');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (19, 21, 4,1, 25, 6, 2023, 'ANALISTA DE PATROCINIO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (20, 22, 4,1, 27, 6, 2023, 'ANALISTA DE RÉGIMEN DISCIPLINARIO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (21, 23, 4,1, 27, 6, 2023, 'ANALISTA DE SEMAFORIZACIÓN Y SEÑALIZACIÓN');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (22, 24, 4 ,1, 25, 6, 2023, 'ANALISTA DE SOPORTE TECNICO INFORMATICO ');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (23, 25, 4 ,1, 24, 6, 2023, 'ANALISTA DE TECNOLOGÍA 1');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (24, 26, 4 ,1, 26, 6, 2023, 'ANALISTA DE TECNOLOGIA 3');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (25, 27, 4 ,1, 25, 6, 2023, 'ANALISTA FINANCIERO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (26, 28, 4 ,1, 26, 6, 2023, 'ANALISTA JURIDICO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (27, 29, 4 ,1, 26, 6, 2023, 'ANALISTA JURIDICO 2');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (28, 30, 4 ,1, 26, 6, 2023, 'ANALISTA OPERATIVO DE TRÁNSITO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (29, 31, 4 ,1, 26, 6, 2023, 'ANALISTA SECRETARIAL 2');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (30, 32, 4 ,1, 26, 6, 2023, 'ANALISTA SENIOR DE TALENTO HUMANO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (31, 33, 4 ,1, 26, 6, 2023, 'APOYO ADMINISTRATIVO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (32, 34, 4 ,1, 2, 2, 2023, 'APOYO ADMINISTRATIVO DE DIRECCIÓN DE TRÁNSITO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (33, 35, 4 ,1, 3, 2, 2023, 'APOYO ADMINISTRATIVO DE DIRECCIÓN DE TRÁNSITO');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (34, 36, 4 ,1, 3, 2, 2023, 'APOYO ADMINISTRATIVO DE MATRICULACION');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (35, 37, 4 ,1, 12, 2, 2023, 'APOYO ADMINISTRATIVO DE TRANSITO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (36, 38, 4 ,1, 4, 2, 2023, 'APOYO ADMINISTRATIVO DE UNASER');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (37, 39, 4 ,1, 17, 2, 2023, 'ARCHIVO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (38, 40, 4 ,1, 2, 2, 2023, 'ASESOR JURIDICO TERMINAL TERRESTRE');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (39, 41, 4 ,1, 5, 2, 2023, 'ASISTENTE 1 DE MATRICULACION');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (40, 42, 4 ,1, 1, 2, 2023, 'ASISTENTE ADMINISTRATIVO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (41, 43, 4 ,1, 4, 2, 2023, 'ASISTENTE ADMINISTRATIVO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (42, 44, 4 ,1, 4, 2, 2023, 'ASISTENTE CONTABLE');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (43, 45, 4 ,1, 4, 2, 2023, 'ASISTENTE DE BIENES Y GUARDALMACEN');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (44, 46, 4 ,1, 1, 2, 2023, 'ASISTENTE DE BODEGA');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (45, 47, 4 ,1, 17, 2, 2023, 'ASISTENTE DE COMERCIALIZACION Y MERCADEO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (46, 48, 4 ,1, 2, 2, 2023, 'ASISTENTE DE COMPRAS PUBLICAS');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (47, 49, 4 ,1, 3, 2, 2023, 'ASISTENTE DE COMUNICACIÓN');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (48, 50, 4 ,1, 1, 2, 2023, 'ASISTENTE DE DISEÑO GRAFICO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (49, 51, 4 ,1, 4, 2, 2023, 'ASISTENTE DE GERENCIA');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (50, 52, 4 ,1, 23, 3, 2023, 'ASISTENTE DE PLANIFICACION');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (51, 53, 4 ,1, 11, 3, 2023, 'ASISTENTE DE RECAUDACION');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (52, 54, 4 ,1, 22, 3, 2023, 'ASISTENTE TECNICO DE ACTUALIZACIONES');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (53, 55, 4 ,1, 23, 3, 2023, 'ASISTENTE TÉCNICO DE MATRICULACIÓN');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (54, 56, 4 ,1, 11, 3, 2023, 'ASISTENTE TECNICO DE RESOLUCIONES');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (55, 57, 4 ,1, 23, 3, 2023, 'ASISTENTE TECNICO DE REVISION');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (56, 58, 4 ,1, 10, 9, 2023, 'ASISTENTE TECNICO DE SEMAFORIZACION');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (57, 59, 4 ,1, 23, 3, 2023, 'ASISTENTE TECNICO Y DE MANTENIMIENTO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (58, 60, 4 ,1, 11, 3, 2023, 'AUXILIAR ADMINISTRATIVA');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (59, 61, 4 ,1, 23, 3, 2023, 'AUXILIAR DE ARCHIVO DE TRÁNSITO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (60, 62, 4 ,1, 10, 3, 2023, 'AUXILIAR DE SEMAFORIZACION -OPERATIVA');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (61, 63, 4 ,1, 13, 5, 2023, 'AUXILIAR OPERATIVO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (62, 64, 4 ,1, 13, 5, 2023, 'AUXILIAR OPERATIVO CT');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (63, 65, 4 ,1, 13, 5, 2023, 'CAJERO RECAUDADOR');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (64, 66, 4 ,1, 13, 5, 2023, 'CONTADOR GENERAL CT');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (65, 67, 4 ,1, 13, 5, 2023, 'COORDINADOR DE DESPACHO');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year,eo_descripcion, eo_fecha, eo_fecha_update)
+VALUES (9,9,2,1,16,2,2023, 'DIRECTOR ADMINISTRATIVO FINANCIERO','15:47:42+00:00','15:47:42+00:00');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (66, 68, 2 ,1, 15, 5, 2023, 'DIRECTOR JURIDICO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (67, 69, 2 ,1, 15, 5, 2023, 'DIRECTOR TTHH');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (68, 70, 4 ,1, 7, 4, 2023, 'DISEÑADOR GRAFICO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (69, 71, 3 ,1, 17, 4, 2023, 'GERENTE FILIA TT');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (70, 72, 1 ,1, 17, 4, 2023, 'GERENTE GENERAL');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (71, 73, 4 ,1, 17, 4, 2023, 'INSPECTOR DE UNASER');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (72, 74, 3 ,1, 7, 4, 2023, 'JEFE DE BIENES E INVENTARIOS');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (73, 75, 3 ,1, 6, 4, 2023, 'JEFE DE COMERCIALIZACON Y MERCADEO');
+
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (75, 77, 3 ,1, 7, 4, 2023, 'JEFE DE SEGURIDAD Y SALUD OCUPACIONAL');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (76, 78, 3 ,1, 6, 4, 2023, 'JEFE DE SOPORTE TECNICO INFORMATICO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (77, 79, 3 ,1, 6, 4, 2023, 'JEFE DE TESORERIA');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (78, 80, 3 ,1, 18, 4, 2023, 'JEFE DE UNIDAD TECNICO Y MANTENIMIENTO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (79, 81, 3 ,1, 18, 4, 2023, 'MÉDICO OCUPACIONAL');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (80, 82, 4 ,1, 6, 4, 2023, 'OPERADOR DE MONITOREO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (81, 83, 4 ,1, 6, 4, 2023, 'OPERADOR DE MONITOREO Y CONTROL');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (82, 84, 4 ,1, 7, 4, 2023, 'OPERADOR DE MONITOREO Y CONTROL CT');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (83, 85, 4 ,1, 6, 4, 2023, 'OPERADOR DE MONITOREO Y CONTROL LOEP');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (84, 86, 4 ,1, 7, 4, 2023, 'REVISOR VEHICULAR ');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (85, 87, 2 ,1, 7, 4, 2023, 'SUB DIRECTOR DE MOVILIDAD');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (86, 88, 2 ,1, 18, 4, 2023, 'SUB DIRECTORA DE PATROCINIO JURIDICO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (87, 89, 3 ,1, 9, 4, 2023, 'SUBDIRECTOR DE EDUCACIÓN VIAL Y FORMACIÓN DE AGENTES DE TRÁNSITO ');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (88, 90, 3 ,1, 6, 4, 2023, 'SUBDIRECTOR DE MATRICULACIÓN');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (89, 91, 3 ,1, 7, 4, 2023, 'SUBDIRECTOR DE OPERACIONES');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (90, 92, 4 ,1, 18, 4, 2023, 'SUPERVISOR');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (91, 94, 4 ,1, 18, 4, 2023, 'SUPERVISOR - CT');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (92, 95, 4 ,1, 6, 4, 2023, 'SUPERVISOR DE AGENTES CIVILES');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (93, 96, 4 ,1, 9, 4, 2023, 'SUPERVISOR DE AGENTES CIVILES- LOSEP');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (94, 97, 4 ,1, 9, 4, 2023, 'SUPERVISOR DE AGENTES DE TRANSITO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (95, 98, 4 ,1, 9, 4, 2023, 'SUPERVISOR OPERATIVO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (96, 99, 4 ,1, 7, 4, 2023, 'SUPERVISOR UNASER');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (97, 100, 4 ,1, 7, 4, 2023, 'SUPERVISORA DE TRAMIFÁCIL');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (98, 101, 4 ,1, 18, 4, 2023, 'TECNICO DE MANTENIMIENTO DE TRÁNSITO');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (99, 102, 4 ,1, 7, 4, 2023, 'TECNICO DE MOVILIDAD');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (100, 103, 4 ,1, 7, 4, 2023, 'TECNICO DIGITADOR DE MATRICULACION');
+INSERT INTO public.tbl_estructuras_organicas(eo_id, eo_id_cargo, eo_nivel, eo_estado, eo_id_jefatura, eo_id_direccion, eo_year, eo_descripcion)
+VALUES (101, 104, 4 ,1, 6, 4, 2023, 'TRABAJADORA SOCIAL');

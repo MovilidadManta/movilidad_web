@@ -1,0 +1,432 @@
+--INICIO CURSOR EMPELADO--
+-- FUNCTION: public.cursor_listar_empleados()
+
+-- DROP FUNCTION public.cursor_listar_empleados();
+
+CREATE OR REPLACE FUNCTION public.cursor_listar_empleados(
+	)
+    RETURNS text
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+DECLARE 
+ cant  text;
+ resu  text;
+ mov   text ARRAY;
+ titles TEXT DEFAULT '';
+ contador integer;
+ resul   RECORD; 
+ resul2   RECORD;
+ resultado text;
+ resulJson text;
+ resulFinal text;
+ jsonResult json;
+ correo text;
+ DECLARE r record;
+ 	
+ cur_can CURSOR	FOR SELECT ( 
+	 '{
+	 "emp_id":' 					    || ' ' || e.emp_id 			    	|| ', 
+	 "emp_cedula":' 					|| ' ' || e.emp_cedula 				|| ',
+	 "emp_nombre":'						|| ' ' || e.emp_nombre				|| ',
+	 "emp_apellido":'					|| ' ' || e.emp_apellido			|| ',
+	 "emp_id_perfil":'					|| '"' || e.emp_id_perfil			|| '",
+	 "emp_id_departamento":'			|| '"' || e.emp_id_departamento		|| '",
+	 "emp_tipo_contrato":'				|| '"' || e.emp_tipo_contrato		|| '",
+	 "emp_telefono":'					|| '"' || e.emp_telefono			|| '",
+	 "emp_remuneracion":'				|| '"' || e.emp_remuneracion		|| '",
+	 "emp_direccion":'					|| '"' || e.emp_direccion			|| '",
+	 "emp_ruta_foto":'					|| ' ' || e.emp_ruta_foto			|| ',
+	 "emp_observacion":'				|| '"' || e.emp_observacion			|| '"
+	 },') as  resu  
+		FROM public.tbl_empleados e
+		ORDER by e.emp_id;
+BEGIN
+    -- Abrir el cursor  
+	OPEN cur_can;
+   LOOP
+      FETCH cur_can INTO resul;
+	  EXIT WHEN NOT FOUND;
+	  
+	  if cant is null then
+	  	cant := '[' ||  resul.resu;
+	  else 
+	  	cant := cant || resul.resu;
+      end if;
+   END LOOP;
+  
+   -- Close the cursor
+   CLOSE cur_can;
+   contador := LENGTH(cant);
+  
+   --resulJson := '[' || substring (cant,1,contador-1) || ']';
+   --jsonResult:=resulJson;
+  -- resulFinal := (SELECT to_json(array_agg(t)) FROM (select * from json_populate_recordset(null::public.proyectos,jsonResult) A order by pro_id ASC) t);
+  -- raise notice 'Value: %', resulFinal;
+   RETURN  substring (cant, 1, contador-1) || ']';
+  
+END;
+$BODY$;
+
+ALTER FUNCTION public.cursor_listar_empleados()
+    OWNER TO postgres;
+
+--FIN CURSOR EMPELADO--
+
+-- FUNCTION: public.cursor_listar_departamentos()
+
+-- DROP FUNCTION public.cursor_listar_departamentos();
+
+CREATE OR REPLACE FUNCTION public.cursor_listar_departamentos(
+	)
+    RETURNS text
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+DECLARE 
+ cant  text;
+ resu  text;
+ mov   text ARRAY;
+ titles TEXT DEFAULT '';
+ contador integer;
+ resul   RECORD; 
+ resul2   RECORD;
+ resultado text;
+ resulJson text;
+ resulFinal text;
+ jsonResult json;
+ correo text;
+ DECLARE r record;
+ 	
+ cur_can CURSOR	FOR SELECT ( 
+	 '{
+	 "dep_id":' 					    || ' ' || d.dep_id 			    	|| ', 
+	 "dep_departamento":' 				|| '"' || d.dep_departamento 		|| '",
+	 "dep_fecha":'						|| '"' || d.dep_fecha				|| '",
+	 "dep_fecha_update":'				|| '"' || d.dep_fecha_update		|| '"
+	 },') as  resu  
+		FROM public.tbl_departamentos d
+		ORDER by d.dep_id ;
+BEGIN
+    -- Abrir el cursor  
+	OPEN cur_can;
+   LOOP
+      FETCH cur_can INTO resul;
+	  EXIT WHEN NOT FOUND;
+	  
+	  if cant is null then
+	  	cant := '[' ||  resul.resu;
+	  else 
+	  	cant := cant || resul.resu;
+      end if;
+   END LOOP;
+  
+   -- Close the cursor
+   CLOSE cur_can;
+   contador := LENGTH(cant);
+  
+   --resulJson := '[' || substring (cant,1,contador-1) || ']';
+   --jsonResult:=resulJson;
+  -- resulFinal := (SELECT to_json(array_agg(t)) FROM (select * from json_populate_recordset(null::public.proyectos,jsonResult) A order by pro_id ASC) t);
+  -- raise notice 'Value: %', resulFinal;
+   RETURN  substring (cant, 1, contador-1) || ']';
+  
+END;
+$BODY$;
+
+ALTER FUNCTION public.cursor_listar_departamentos()
+    OWNER TO postgres;
+
+	-- FUNCTION: public.cursor_listar_empleados()
+
+-- DROP FUNCTION public.cursor_listar_empleados();
+
+CREATE OR REPLACE FUNCTION public.cursor_listar_empleados(
+	)
+    RETURNS text
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+DECLARE 
+ cant  text;
+ resu  text;
+ mov   text ARRAY;
+ titles TEXT DEFAULT '';
+ contador integer;
+ resul   RECORD; 
+ resul2   RECORD;
+ resultado text;
+ resulJson text;
+ resulFinal text;
+ jsonResult json;
+ correo text;
+ DECLARE r record;
+ 	
+ cur_can CURSOR	FOR SELECT ( 
+	 '{
+	 "emp_id":' 					    || ' ' || e.emp_id 			    	|| ', 
+	 "emp_cedula":' 					|| '"'|| e.emp_cedula 				|| '",
+	 "emp_nombre":'						|| '"' || e.emp_nombre				|| '",
+	 "emp_apellido":'					|| '"' || e.emp_apellido			|| '",
+	 "emp_id_perfil":'					|| ' ' || e.emp_id_perfil			|| ' ,
+	 "emp_id_departamento":'			|| ' ' || e.emp_id_departamento		|| ' ,
+	 "emp_tipo_contrato":'				|| ' ' || e.emp_tipo_contrato		|| ' ,
+	 "emp_telefono":'					|| '"' || e.emp_telefono			|| '",
+	 "emp_remuneracion":'				|| ' ' || e.emp_remuneracion		|| ' ,
+	 "emp_direccion":'					|| '"' || e.emp_direccion			|| '",
+	 "emp_ruta_foto":'					|| '"' || e.emp_ruta_foto			|| '",
+	 "emp_observacion":'				|| '"' || e.emp_observacion			|| '"
+	 },') as  resu  
+		FROM public.tbl_empleados e
+		ORDER by e.emp_id;
+BEGIN
+    -- Abrir el cursor  
+	OPEN cur_can;
+   LOOP
+      FETCH cur_can INTO resul;
+	  EXIT WHEN NOT FOUND;
+	  
+	  if cant is null then
+	  	cant := '[' ||  resul.resu;
+	  else 
+	  	cant := cant || resul.resu;
+      end if;
+   END LOOP;
+  
+   -- Close the cursor
+   CLOSE cur_can;
+   contador := LENGTH(cant);
+  
+   --resulJson := '[' || substring (cant,1,contador-1) || ']';
+   --jsonResult:=resulJson;
+  -- resulFinal := (SELECT to_json(array_agg(t)) FROM (select * from json_populate_recordset(null::public.proyectos,jsonResult) A order by pro_id ASC) t);
+  -- raise notice 'Value: %', resulFinal;
+   RETURN  substring (cant, 1, contador-1) || ']';
+  
+END;
+$BODY$;
+
+ALTER FUNCTION public.cursor_listar_empleados()
+    OWNER TO postgres;
+
+-- FUNCTION: public.cursor_listar_perfiles()
+
+-- DROP FUNCTION public.cursor_listar_perfiles();
+
+CREATE OR REPLACE FUNCTION public.cursor_listar_perfiles(
+	)
+    RETURNS text
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+DECLARE 
+ cant  text;
+ resu  text;
+ mov   text ARRAY;
+ titles TEXT DEFAULT '';
+ contador integer;
+ resul   RECORD; 
+ resul2   RECORD;
+ resultado text;
+ resulJson text;
+ resulFinal text;
+ jsonResult json;
+ correo text;
+ DECLARE r record;
+ 	
+ cur_can CURSOR	FOR SELECT ( 
+	 '{
+	 "per_id":' 					    || ' ' || p.per_id 			    	|| ', 
+	 "per_perfil":' 					|| '"' || p.per_perfil 				|| '",
+	 "per_fecha":'						|| '"' || p.per_fecha				|| '",
+	 "per_fecha_update":'				|| '"' || p.per_fecha_update		|| '"
+	 },') as  resu  
+		FROM public.tbl_perfiles p
+		ORDER by p.per_id;
+BEGIN
+    -- Abrir el cursor  
+	OPEN cur_can;
+   LOOP
+      FETCH cur_can INTO resul;
+	  EXIT WHEN NOT FOUND;
+	  
+	  if cant is null then
+	  	cant := '[' ||  resul.resu;
+	  else 
+	  	cant := cant || resul.resu;
+      end if;
+   END LOOP;
+  
+   -- Close the cursor
+   CLOSE cur_can;
+   contador := LENGTH(cant);
+  
+   --resulJson := '[' || substring (cant,1,contador-1) || ']';
+   --jsonResult:=resulJson;
+  -- resulFinal := (SELECT to_json(array_agg(t)) FROM (select * from json_populate_recordset(null::public.proyectos,jsonResult) A order by pro_id ASC) t);
+  -- raise notice 'Value: %', resulFinal;
+   RETURN  substring (cant, 1, contador-1) || ']';
+  
+END;
+$BODY$;
+
+ALTER FUNCTION public.cursor_listar_perfiles()
+    OWNER TO postgres;
+
+	---CURSOR DE DATOS DE NOSOTROS(MISION Y VISION)
+	-- FUNCTION: public.cursor_listar_nosotros()
+
+-- DROP FUNCTION public.cursor_listar_nosotros();
+
+CREATE OR REPLACE FUNCTION public.cursor_listar_nosotros(
+	)
+    RETURNS text
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+DECLARE 
+ cant  text;
+ resu  text;
+ mov   text ARRAY;
+ titles TEXT DEFAULT '';
+ contador integer;
+ resul   RECORD; 
+ resul2   RECORD;
+ resultado text;
+ resulJson text;
+ resulFinal text;
+ jsonResult json;
+ correo text;
+ DECLARE r record;
+ 	
+ cur_can CURSOR	FOR SELECT ( 
+	 '{
+	 "nos_id":' 					    || ' ' || n.nos_id 			    	|| ', 
+	 "nos_mision":' 					|| '"' || n.nos_mision 				|| '",
+	 "nos_vision":'						|| '"' || n.nos_vision				|| '"
+	 },') as  resu  
+		FROM public.tbl_nosotros n
+		ORDER by n.nos_id;
+BEGIN
+    -- Abrir el cursor  
+	OPEN cur_can;
+   LOOP
+      FETCH cur_can INTO resul;
+	  EXIT WHEN NOT FOUND;
+	  
+	  if cant is null then
+	  	cant := '[' ||  resul.resu;
+	  else 
+	  	cant := cant || resul.resu;
+      end if;
+   END LOOP;
+  
+   -- Close the cursor
+   CLOSE cur_can;
+   contador := LENGTH(cant);
+  
+   --resulJson := '[' || substring (cant,1,contador-1) || ']';
+   --jsonResult:=resulJson;
+  -- resulFinal := (SELECT to_json(array_agg(t)) FROM (select * from json_populate_recordset(null::public.proyectos,jsonResult) A order by pro_id ASC) t);
+  -- raise notice 'Value: %', resulFinal;
+   RETURN  substring (cant, 1, contador-1) || ']';
+  
+END;
+$BODY$;
+
+ALTER FUNCTION public.cursor_listar_nosotros()
+    OWNER TO postgres;
+
+	/*CURSOR DE REPORTE DE EMPLEADO POR FECHAS */ 
+	-- FUNCTION: public.cursor_listar_reporte_empleados()
+
+-- DROP FUNCTION public.cursor_listar_reporte_empleados();
+
+CREATE OR REPLACE FUNCTION public.cursor_listar_reporte_empleados(
+	l_fecha_inicio text,
+	l_fecha_fin text
+	)
+    RETURNS text
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+DECLARE 
+ cant  text;
+ resu  text;
+ mov   text ARRAY;
+ titles TEXT DEFAULT '';
+ contador integer;
+ resul   RECORD; 
+ resul2   RECORD;
+ resultado text;
+ resulJson text;
+ resulFinal text;
+ jsonResult json;
+ correo text;
+ DECLARE r record;
+ 	
+ cur_can CURSOR	FOR SELECT ( 
+	 '{
+	 "emp_id":' 					    || ' ' || e.emp_id 			    	|| ', 
+	 "emp_cedula":' 					|| '"'|| e.emp_cedula 				|| '",
+	 "emp_nombre":'						|| '"' || e.emp_nombre				|| '",
+	 "emp_apellido":'					|| '"' || e.emp_apellido			|| '",
+	 "emp_id_perfil":'					|| ' ' || e.emp_id_perfil			|| ' ,
+	 "per_perfil":'						|| '"' || p.per_perfil				|| '",
+	 "emp_id_departamento":'			|| ' ' || e.emp_id_departamento		|| ' ,
+	 "dep_departamento":'				|| '"' || d.dep_departamento		|| '",
+	 "emp_tipo_contrato":'				|| ' ' || e.emp_tipo_contrato		|| ' ,
+	 "emp_telefono":'					|| '"' || e.emp_telefono			|| '",
+	 "emp_remuneracion":'				|| ' ' || e.emp_remuneracion		|| ' ,
+	 "emp_direccion":'					|| '"' || e.emp_direccion			|| '",
+	 "emp_ruta_foto":'					|| '"' || e.emp_ruta_foto			|| '",
+	 "emp_observacion":'				|| '"' || e.emp_observacion			|| '",
+	 "emp_fecha_ingreso":'				|| '"' || e.emp_fecha_ingreso		|| '"
+	 },') as  resu  
+		FROM public.tbl_empleados e,public.tbl_perfiles p, public.tbl_departamentos d
+		WHERE e.emp_id_perfil = p.per_id
+		AND e.emp_id_departamento = d.dep_id
+		AND e.emp_fecha_ingreso >= TO_DATE(l_fecha_inicio, 'YYYY-MM-DD')
+		AND e.emp_fecha_ingreso <= TO_DATE(l_fecha_fin, 'YYYY-MM-DD')
+		ORDER by e.emp_id;
+BEGIN
+    -- Abrir el cursor  
+	OPEN cur_can;
+   LOOP
+      FETCH cur_can INTO resul;
+	  EXIT WHEN NOT FOUND;
+	  
+	  if cant is null then
+	  	cant := '[' ||  resul.resu;
+	  else 
+	  	cant := cant || resul.resu;
+      end if;
+   END LOOP;
+  
+   -- Close the cursor
+   CLOSE cur_can;
+   contador := LENGTH(cant);
+  
+   --resulJson := '[' || substring (cant,1,contador-1) || ']';
+   --jsonResult:=resulJson;
+  -- resulFinal := (SELECT to_json(array_agg(t)) FROM (select * from json_populate_recordset(null::public.proyectos,jsonResult) A order by pro_id ASC) t);
+  -- raise notice 'Value: %', resulFinal;
+   RETURN  substring (cant, 1, contador-1) || ']';
+  
+END;
+$BODY$;
+
+ALTER FUNCTION public.cursor_listar_reporte_empleados(text,text)
+    OWNER TO postgres;
+
+
+
+
+
+

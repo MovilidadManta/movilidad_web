@@ -1,0 +1,11 @@
+INSERT INTO public.tbl_perfiles(per_perfil, per_fecha, per_fecha_update)VALUES ('JEFE DE COMERCIALIZACION Y MERCADEO',now(),now());
+INSERT INTO public.tbl_perfiles(per_perfil, per_fecha, per_fecha_update)VALUES ('SUBDIRECTORA DE PATROCINIO JURIDICO',now(),now());
+INSERT INTO public.tbl_perfiles(per_perfil, per_fecha, per_fecha_update)VALUES ('ANALISTA JURIDICO',now(),now());
+INSERT INTO public.tbl_perfiles(per_perfil, per_fecha, per_fecha_update)VALUES ('DIRECTOR JURIDICO',now(),now());
+INSERT INTO public.tbl_perfiles(per_perfil, per_fecha, per_fecha_update)VALUES ('ASISTENTE ADMINISTRATIVO',now(),now());
+INSERT INTO public.tbl_perfiles(per_perfil, per_fecha, per_fecha_update)VALUES ('JEFE DE PATROCINIO / CONTROVERSIAS Y FLAGRANCIAS',now(),now());
+INSERT INTO public.tbl_perfiles(per_perfil, per_fecha, per_fecha_update)VALUES ('ANALISTA DE ARCHIVO',now(),now());
+INSERT INTO public.tbl_perfiles(per_perfil, per_fecha, per_fecha_update)VALUES ('TRABAJADORA SOCIAL',now(),now());
+INSERT INTO public.tbl_perfiles(per_perfil, per_fecha, per_fecha_update)VALUES ('ASISTENTE DE GERENCIA',now(),now());
+INSERT INTO public.tbl_perfiles(per_perfil, per_fecha, per_fecha_update)VALUES ('JEFE DE COMERCIALIZACION Y MERCADEO',now(),now());
+INSERT INTO public.tbl_perfiles(per_perfil, per_fecha, per_fecha_update)VALUES ('JEFE DE COMERCIALIZACION Y MERCADEO',now(),now());

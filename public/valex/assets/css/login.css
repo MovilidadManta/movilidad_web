@@ -1,0 +1,117 @@
+.imagen-body-ee {
+    font-family: Rounded !important;
+    position: absolute;
+    font-family: Montserrat;
+    /* top: 60px; */
+    /* right: -40px; */
+    /* bottom: -40px; */
+    margin-left:-40%;
+    width: 75%;
+    height: 100%;
+    opacity: 93%;
+    /*background: url('https://lh5.googleusercontent.com/p/AF1QipNOTI3IzIFMyk0unqNk2YaHuKLmsfQ1NKHtKvJd=w650-h486-k-no') no-repeat fixed center center;*/
+    /*background: url('/valex/assets/img/terminal.jpg') no-repeat fixed center center;*/
+    background: url('/valex/assets/img/logos/transito.jpg') no-repeat fixed center center;
+    background-size: cover;
+    z-index: 0;
+}
+
+.imagen-body {
+    font-family: Rounded !important;
+    position: absolute;
+    font-family: Montserrat;
+    /* top: 60px; */
+    /* right: -40px; */
+    /* bottom: -40px; */
+    margin-left: 0%;
+    width: 60%;
+    height: 100%;
+    opacity: 90%;
+    /* background: url(https://lh5.googleusercontent.com/p/AF1QipNOTI3IzIFMyk0unqNk2YaHuKLmsfQ1NKHtKvJd=w650-h486-k-no) no-repeat fixed center center; */
+    /* background: url(/valex/assets/img/terminal.jpg) no-repeat fixed center center; */
+    background: url(/valex/assets/img/logos/transito.jpg) no-repeat fixed center center;
+    background-size: cover;
+    z-index: 0;
+}
+
+.bg-primary-transparent {
+    background-color: rgb(1 98 232 / 0%) !important;
+}
+
+.pb-4, .py-4 {
+    padding-bottom: 0rem !important;
+}
+
+.pt-4, .py-4 {
+    padding-top: 0rem !important;
+}
+
+.ht-40 {
+    height: auto;
+    /* align-content: center; */
+}
+
+.main-signup-header h2 {
+    font-weight: 1000;
+    color: #009ee2;
+    letter-spacing: -1px;
+}
+
+.btn-main-primary {
+    color: #fff;
+    background-color: #084785;
+    border-color: #084785;
+    font-size: 20px;
+}
+
+.btn-main-primary :hover{
+    color: #fff;
+    background-color: #084785;
+    border-color: #084785;
+    font-size: 20px;
+}
+
+.main-signup-header .form-control {
+    color: #031b4e;
+    font-weight: 500;
+    border-width: 1px;
+    border-color: #eae8f1;
+    font-size: 20px;
+}
+
+.main-signup-header label {
+    color: #a5a0b1;
+    font-size: 20px;
+}
+
+.spinner-border-sm {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-width: 0.2em;
+    margin-left: 0px;
+}
+
+.margin-spiner{
+    margin-right: 12px !important;
+}
+
+.mb-5, .my-5 {
+    margin-bottom: 1rem !important;
+}
+
+.fon-size-titu{
+    font-size: 22px;
+}
+
+.login-img{
+    min-height: 0vh !important;
+}
+
+/*pantallas telefonos*/
+@media only screen and (max-width: 400px) {
+    .imagen-body {
+    width: 100%;
+    }
+}
+
+

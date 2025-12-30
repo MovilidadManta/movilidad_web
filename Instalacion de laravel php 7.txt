@@ -1,0 +1,81 @@
+#######################################################
+###############GUIA DE INSTALACION#####################
+#######################################################
+
+############ Centos 7 #########################
+
+yum -y install kernel kernel-devel kernel-headers
+reboot
+yum update -y
+reboot
+
+###########################################################
+############ ADICIONALES #############################
+yum -y install vim
+php --version
+
+#############################################################
+################ HTTP  / APACHE #############################
+yum install httpd -y
+systemctl start httpd
+systemctl enable httpd
+
+###############################################################
+############### PHP 7.3 install ###############################
+
+yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+yum install yum-utils
+yum-config-manager --enable remi-php73
+yum install php php-mcrypt php-cli php-gd php-curl php-mysql php-ldap php-zip php-fileinfo
+php -v
+yum install php php-xml php-mbstring php-mysql
+yum install unzip zip -y
+yum install php php-fpm
+sudo systemctl start php-fpm
+systemctl restart httpd.service
+
+#################################################################
+################# BASE DE DATOS ################################# 
+yum install mariadb-server mariadb mariadb-devel -y
+systemctl start mariadb
+systemctl enable mariadb
+
+###############################################################
+################ LARABEL --- COMPOSER #########################
+
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/bin/composer
+cd /var/www/html/
+composer create-project --prefer-dist laravel/laravel prueba
+chown -R apache:apache prueba/
+chmod -R 755 prueba/storage/
+
+########################################################
+#########################################################
+############## IMPORTANTE ############################
+----- Desabilitar selinux
+setenforce 0
+
+----- Abrir el puerto 80 del firewall o desabilitar el firewall
+systemctl stop firewalld
+
+###################################################################
+#####################  FIN DE LA INSTALACION ######################
+###################################################################
+
+################## REQUISITOS DE PHP ######################
+php-cli-7.3.8-1.el7.remi.x86_64
+php-gd-7.3.8-1.el7.remi.x86_64
+php-mbstring-7.3.8-1.el7.remi.x86_64
+php-common-7.3.8-1.el7.remi.x86_64
+php-pdo-7.3.8-1.el7.remi.x86_64
+php-pecl-mcrypt-1.0.2-2.el7.remi.7.3.x86_64
+php-pecl-zip-1.15.4-1.el7.remi.7.3.x86_64
+php-ldap-7.3.8-1.el7.remi.x86_64
+php-xml-7.3.8-1.el7.remi.x86_64
+php-fpm-7.3.8-1.el7.remi.x86_64
+php-json-7.3.8-1.el7.remi.x86_64
+php-7.3.8-1.el7.remi.x86_64
+php-mysqlnd-7.3.8-1.el7.remi.x86_64
+

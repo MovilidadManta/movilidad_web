@@ -1,0 +1,15 @@
+SELECT emp_id,emp_nombre,emp_apellido, emp_id_perfil, emp_id_departamento,emp_cargo, 
+emp_id_cargo, emp_id_cargo_jefe
+	
+	FROM public.tbl_empleados
+	where emp_cargo like '%DIRECTOR ADMINISTRATIVO FINANCIERO%'
+	and emp_id = 86
+	
+UPDATE public.tbl_empleados
+	SET  emp_id_cargo=9, emp_id_cargo_jefe=61
+	where emp_cargo like '%DIRECTOR ADMINISTRATIVO FINANCIERO%'
+	and emp_id = 86;
+	
+UPDATE public.tbl_empleados
+	SET  emp_id_cargo=, emp_id_cargo_jefe=107
+	where emp_cargo like '%AUXILIAR OPERATIVO%';

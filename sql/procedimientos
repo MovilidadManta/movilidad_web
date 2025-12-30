@@ -1,0 +1,695 @@
+
+/*INICIO LOGIN*/
+-- FUNCTION: public.proce_login_usuario(text, text)
+
+-- DROP FUNCTION public.proce_login_usuario(text, text);
+
+CREATE OR REPLACE FUNCTION public.proce_login_usuario(
+	in_usuario text,
+	in_ip text,
+	OUT out_mensaje text)
+    RETURNS text
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+declare 
+   L_RESPONSE TEXT;
+   l_codigo_id_usuario integer;
+   --l_existe TEXT;
+   l_description text;
+BEGIN 
+	--Consultar si el email esta registrado
+	L_RESPONSE := (select usu_clave from public.tbl_usuarios uu where uu.usu_correo  = in_usuario);
+	
+	--Consultar el id del usuario
+	l_codigo_id_usuario := (select usu_id from public.tbl_usuarios uu where uu.usu_correo = in_usuario);
+ 	
+    --Condiciones si el email es null o no 
+	IF (L_RESPONSE is null) THEN
+		l_description:= 'Intento de Login de : ' || '' || in_usuario || ' desde la ip:' || in_ip;
+		OUT_MENSAJE:= '0';
+	ELSE
+		l_description:= 'Se Logueo el Usuario : ' || '' || in_usuario || ' desde la ip:' || in_ip;
+    	OUT_MENSAJE:= L_RESPONSE ; 
+	END IF;
+	
+	--Inserta datos para la auditoria
+	INSERT INTO public.tbl_auditorias (au_id_tipo, au_ip, au_titulo, au_descripcion, au_fecha,au_id_usuario, au_id_proyecto) 
+	VALUES (1,in_ip,'LOGIN',l_description,now(),l_codigo_id_usuario,1);
+
+EXCEPTION when others then 
+		 raise notice '% %', SQLERRM, SQLSTATE;
+		 OUT_MENSAJE:= 'ERROR ' ||  SQLSTATE || ' -- '  || SQLERRM || ' -- ';
+
+    END;
+$BODY$;
+
+ALTER FUNCTION public.proce_login_usuario(text, text)
+    OWNER TO postgres;
+
+/*FIN LOGIN*/
+
+
+/*INICIO REGISTRAR EMPLEADO*/
+-- FUNCTION: public.procedimiento_registrar_datos_empleado(text, text, integer)
+
+-- DROP FUNCTION public.procedimiento_registrar_datos_empleado(text, text, integer);
+
+CREATE OR REPLACE FUNCTION public.procedimiento_registrar_datos_empleado(
+	in_json text,
+	in_ip text,
+	in_user integer,
+	OUT resultado text)
+    RETURNS text
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+DECLARE
+   jp json; -- Variable que recibe el Json de entrada 
+   jp1 json; -- Variable para obtener las filas de JSON
+   r int; -- Variable que me permite obtener el numero de filas del JSON 
+	--JSON DATOS PERSONALES--
+   l_id bigint; --Id del registro guardado
+   l_cedula text; -- Variable para asignar cedula
+   l_nombre text; -- Variable para asignar nombre
+   l_apellido text; -- Variable para asignar apellido
+   l_telefono text; -- Variable para asignar telefono
+   l_id_departamento integer; -- Variable para asignar departamento
+   l_id_perfil integer; -- Variable para asignar perfil
+   l_tipo_contrato integer; -- Variable para asignar tipo de contrato
+   l_remuneracion numeric; --Variable para asignar remuneracion
+   l_direccion text; --Variable para asignar direcccion
+   l_observacion text; --Variable para asignar observacion
+   l_foto text; --Variable para asignar nombre de la foto
+
+   l_descripcion text;
+   l_nombre_usuario text;
+   l_validar_empleado text;
+     
+BEGIN 
+	--Consultar nombre del usuario que ingresa auditoria
+	l_nombre_usuario := (select usu_correo FROM public.tbl_usuarios u
+							WHERE u.usu_id = in_user);
+	
+   jp := in_json;
+   r := (select *  from Json_array_length(jp)) -1 ; -- OBTIENE EL NUMERO DE REGISTROS
+   ----------------------------------------------
+    -- INICIA EL RECORRIDO DE LOS REGISTROS
+    FOR v IN 0..r
+    LOOP
+      jp1:=(select jp::json->v ); -- OBTIENE EL JSON SEGÚN LA POSICIÓN
+      l_cedula := (SELECT cedula from json_to_record(jp1) as x(cedula text));
+      l_nombre := (SELECT nombre from json_to_record(jp1) as x(nombre text));
+      l_apellido := (SELECT apellido from json_to_record(jp1) as x(apellido text));
+      l_telefono := (SELECT telefono from json_to_record(jp1) as x(telefono text));
+      l_id_departamento := (SELECT departamento from json_to_record(jp1) as x(departamento integer));
+      l_id_perfil := (SELECT perfil from json_to_record(jp1) as x(perfil integer));
+	  l_tipo_contrato := (SELECT tipo_contrato from json_to_record(jp1) as x(tipo_contrato integer));
+	  l_remuneracion := (SELECT remuneracion from json_to_record(jp1) as x(remuneracion numeric));
+	  l_direccion := (SELECT direccion from json_to_record(jp1) as x(direccion text));
+	  l_observacion := (SELECT observacion from json_to_record(jp1) as x(observacion text));
+	  l_foto := (SELECT ruta_foto from json_to_record(jp1) as x(ruta_foto text));
+	  
+	  --CONSULTAMOS A LA TABLA TBL_EMPLEADOS SI ESTA REGISTRADO EL EMPLEADO
+	  l_validar_empleado :=(select 1 from public.tbl_empleados e where emp_cedula=l_cedula);
+		
+		 --PREGUNTAMOS SI EL JSON VIENE VACIO O NO
+	    IF (in_json is null) THEN
+        	resultado:= 0; 
+	    ELSE
+			IF(l_validar_empleado is null) THEN
+			-- INSERTA EN LA TABLA TBL_EMPLEADOS
+				INSERT INTO public.tbl_empleados(
+					emp_cedula, 
+					emp_nombre, 
+					emp_apellido, 
+					emp_id_perfil, 
+					emp_id_departamento, 
+					emp_tipo_contrato, 
+					emp_telefono, 
+					emp_remuneracion, 
+					emp_direccion, 
+					emp_observacion,
+					emp_ruta_foto
+				)
+				VALUES (
+					l_cedula, 
+					l_nombre, 
+					l_apellido, 
+					l_id_perfil, 
+					l_id_departamento, 
+					l_tipo_contrato,
+					l_telefono, 
+					l_remuneracion, 
+					l_direccion, 
+					l_observacion,
+					l_foto
+				)returning emp_id into l_id;
+				
+			-- INSERTA EN LA TABLA AUDITORIA DEL PROYECTO
+            	l_descripcion:= 'SE REGISTRO EL EMPLEADO '|| l_nombre ||  l_apellido || ' POR: ' || '' || l_nombre_usuario;
+            	INSERT INTO public.tbl_auditorias (
+					au_id_tipo, 
+					au_ip, 
+					au_titulo, 
+					au_descripcion, 
+					au_fecha,
+					au_id_usuario, 
+					au_id_proyecto
+				) VALUES (
+					1,
+					in_ip,
+					'REGISTRO DE EMPLEADO',
+					l_descripcion,
+					now(),
+					in_user,
+					1
+				);
+           
+		    	--Imprime el resultado
+            	resultado:= l_id; 
+        	ELSE
+				--Imprime el resultado
+            	resultado:= 'empleado_registrado'; 
+			END IF;
+		END IF;
+    END LOOP;
+    -- TERMINA RECORRIDO DE LOS REGISTROS
+
+    --return RAISE NOTICE 'Task completed sucessfully.';
+    EXCEPTION when others then 
+		 raise notice '% %', SQLERRM, SQLSTATE;
+		 resultado:= 'ERROR ' ||  SQLSTATE || ' -- '  || SQLERRM || ' -- ' ;
+
+ END;
+$BODY$;
+
+ALTER FUNCTION public.procedimiento_registrar_datos_empleado(text, text, integer)
+    OWNER TO postgres;
+/*FIN REGISTRAR EMPLEADO*/
+
+/*INICIO MODIFICAR EMPLEADO POR ID*/
+
+-- FUNCTION: public.procedimiento_modificar_datos_empleado(text, text, integer)
+
+-- DROP FUNCTION public.procedimiento_modificar_datos_empleado(text, text, integer);
+
+CREATE OR REPLACE FUNCTION public.procedimiento_modificar_datos_empleado(
+	in_json text,
+	in_ip text,
+	in_user integer,
+	OUT resultado text)
+    RETURNS text
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+DECLARE
+   jp json; -- Variable que recibe el Json de entrada 
+   jp1 json; -- Variable para obtener las filas de JSON
+   r int; -- Variable que me permite obtener el numero de filas del JSON 
+	--JSON DATOS PERSONALES--
+   l_id bigint; --Id del registro guardado
+   l_cedula text; -- Variable para asignar cedula
+   l_nombre text; -- Variable para asignar nombre
+   l_apellido text; -- Variable para asignar apellido
+   l_telefono text; -- Variable para asignar telefono
+   l_id_departamento integer; -- Variable para asignar departamento
+   l_id_perfil integer; -- Variable para asignar perfil
+   l_tipo_contrato integer; -- Variable para asignar tipo de contrato
+   l_remuneracion numeric; --Variable para asignar remuneracion
+   l_direccion text; --Variable para asignar direcccion
+   l_observacion text; --Variable para asignar observacion
+   l_foto text; --Variable para asignar nombre de la foto
+
+   l_descripcion text;
+   l_nombre_usuario text;
+   l_validar_empleado text;
+     
+BEGIN 
+	--Consultar nombre del usuario que ingresa auditoria
+	l_nombre_usuario := (select usu_correo FROM public.tbl_usuarios u
+							WHERE u.usu_id = in_user);
+	
+   jp := in_json;
+   r := (select *  from Json_array_length(jp)) -1 ; -- OBTIENE EL NUMERO DE REGISTROS
+   ----------------------------------------------
+    -- INICIA EL RECORRIDO DE LOS REGISTROS
+    FOR v IN 0..r
+    LOOP
+      jp1:=(select jp::json->v ); -- OBTIENE EL JSON SEGÚN LA POSICIÓN
+	  l_id := (SELECT id from json_to_record(jp1) as x(id integer));
+      l_cedula := (SELECT cedula from json_to_record(jp1) as x(cedula text));
+      l_nombre := (SELECT nombre from json_to_record(jp1) as x(nombre text));
+      l_apellido := (SELECT apellido from json_to_record(jp1) as x(apellido text));
+      l_telefono := (SELECT telefono from json_to_record(jp1) as x(telefono text));
+      l_id_departamento := (SELECT departamento from json_to_record(jp1) as x(departamento integer));
+      l_id_perfil := (SELECT perfil from json_to_record(jp1) as x(perfil integer));
+	  l_tipo_contrato := (SELECT tipo_contrato from json_to_record(jp1) as x(tipo_contrato integer));
+	  l_remuneracion := (SELECT remuneracion from json_to_record(jp1) as x(remuneracion numeric));
+	  l_direccion := (SELECT direccion from json_to_record(jp1) as x(direccion text));
+	  l_observacion := (SELECT observacion from json_to_record(jp1) as x(observacion text));
+	  l_foto := (SELECT ruta_foto from json_to_record(jp1) as x(ruta_foto text));
+	  
+	  --CONSULTAMOS A LA TABLA TBL_EMPLEADOS SI ESTA REGISTRADO EL EMPLEADO
+	  l_validar_empleado :=(select 1 from public.tbl_empleados e where emp_cedula=l_cedula);
+		
+		 --PREGUNTAMOS SI EL JSON VIENE VACIO O NO
+	    IF (in_json is null) THEN
+        	resultado:= 0; 
+	    ELSE
+			IF(l_validar_empleado is null) THEN
+				IF l_foto is null THEN
+					-- ACTUALIZA DATOS EN LA TABLA TBL_EMPLEADOS
+				UPDATE public.tbl_empleados
+					SET 
+					emp_cedula=l_cedula, 
+					emp_nombre=l_nombre, 
+					emp_apellido=l_apellido, 
+					emp_id_perfil=l_id_perfil, 
+					emp_id_departamento=l_id_departamento, 
+					emp_tipo_contrato=l_tipo_contrato, 
+					emp_telefono=l_telefono, 
+					emp_direccion=l_direccion, 
+					emp_observacion=l_observacion, 
+					emp_remuneracion=l_remuneracion
+				WHERE emp_id=l_id;
+				ELSE
+					-- ACTUALIZA DATOS EN LA TABLA TBL_EMPLEADOS
+				UPDATE public.tbl_empleados
+					SET 
+					emp_cedula=l_cedula, 
+					emp_nombre=l_nombre, 
+					emp_apellido=l_apellido, 
+					emp_id_perfil=l_id_perfil, 
+					emp_id_departamento=l_id_departamento, 
+					emp_tipo_contrato=l_tipo_contrato, 
+					emp_telefono=l_telefono, 
+					emp_direccion=l_direccion, 
+					emp_observacion=l_observacion, 
+					emp_remuneracion=l_remuneracion,
+					emp_ruta_foto = l_foto
+				WHERE emp_id=l_id;
+				END IF;
+				
+			-- INSERTA EN LA TABLA AUDITORIA DEL PROYECTO
+            	l_descripcion:= 'SE ACTUALIZO EL EMPLEADO '|| l_nombre ||  l_apellido || ' POR: ' || '' || l_nombre_usuario;
+            	INSERT INTO public.tbl_auditorias (
+					au_id_tipo, 
+					au_ip, 
+					au_titulo, 
+					au_descripcion, 
+					au_fecha,
+					au_id_usuario, 
+					au_id_proyecto
+				) VALUES (
+					1,
+					in_ip,
+					'ACTUALIZACION DE EMPLEADO',
+					l_descripcion,
+					now(),
+					in_user,
+					1
+				);
+           
+		    	--Imprime el resultado
+            	resultado:= l_id; 
+        	ELSE
+				--Imprime el resultado
+            	resultado:= 'empleado_registrado'; 
+			END IF;
+		END IF;
+    END LOOP;
+    -- TERMINA RECORRIDO DE LOS REGISTROS
+
+    --return RAISE NOTICE 'Task completed sucessfully.';
+    EXCEPTION when others then 
+		 raise notice '% %', SQLERRM, SQLSTATE;
+		 resultado:= 'ERROR ' ||  SQLSTATE || ' -- '  || SQLERRM || ' -- ' ;
+
+ END;
+$BODY$;
+
+ALTER FUNCTION public.procedimiento_modificar_datos_empleado(text, text, integer)
+    OWNER TO postgres;
+
+	/*INICIO MODIFICAR EMPLEADO POR ID*/
+
+
+--REGISTRAR NOSOTROS (MISION Y VISION)
+-- FUNCTION: public.procedimiento_registrar_datos_nosotro(text, text, integer)
+
+-- DROP FUNCTION public.procedimiento_registrar_datos_nosotro(text, text, integer);
+
+CREATE OR REPLACE FUNCTION public.procedimiento_registrar_datos_nosotro(
+	in_json text,
+	in_ip text,
+	in_user integer,
+	OUT resultado text)
+    RETURNS text
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+DECLARE
+   jp json; -- Variable que recibe el Json de entrada 
+   jp1 json; -- Variable para obtener las filas de JSON
+   r int; -- Variable que me permite obtener el numero de filas del JSON 
+	--JSON DATOS PERSONALES--
+   l_id bigint; --Id del registro guardado
+   l_mision text; -- Variable para asignar cedula
+   l_vision text; -- Variable para asignar nombre
+   l_ano text; -- Variable para asignar apellido
+
+   l_descripcion text;
+   l_nombre_usuario text;
+     
+BEGIN 
+	--Consultar nombre del usuario que ingresa auditoria
+	l_nombre_usuario := (select usu_correo FROM public.tbl_usuarios u
+							WHERE u.usu_id = in_user);
+	
+   jp := in_json;
+   r := (select *  from Json_array_length(jp)) -1 ; -- OBTIENE EL NUMERO DE REGISTROS
+   ----------------------------------------------
+    -- INICIA EL RECORRIDO DE LOS REGISTROS
+    FOR v IN 0..r
+    LOOP
+      jp1:=(select jp::json->v ); -- OBTIENE EL JSON SEGÚN LA POSICIÓN
+      l_mision := (SELECT mision from json_to_record(jp1) as x(mision text));
+      l_vision := (SELECT vision from json_to_record(jp1) as x(vision text));
+      l_ano := (SELECT ano from json_to_record(jp1) as x(ano text));
+      
+	  --CONSULTAMOS A LA TABLA TBL_EMPLEADOS SI ESTA REGISTRADO EL EMPLEADO
+	  --l_validar_empleado :=(select 1 from public.tbl_empleados e where emp_cedula=l_cedula);
+		
+		 --PREGUNTAMOS SI EL JSON VIENE VACIO O NO
+	    IF (in_json is null) THEN
+        	resultado:= 0; 
+	    ELSE
+		-- INSERTA EN LA TABLA TBL_NOSOTROS
+			INSERT INTO public.tbl_nosotros(
+				nos_mision, 
+				nos_vision
+			)VALUES (
+				l_mision, 
+				l_vision
+				)
+				returning nos_id into l_id;
+				
+		-- INSERTA EN LA TABLA AUDITORIA DEL PROYECTO
+            l_descripcion:= 'SE REGISTRO LA MISION '|| l_mision || ' Y VISION '|| l_vision || ' POR: ' || '' || l_nombre_usuario;
+            INSERT INTO public.tbl_auditorias (
+				au_id_tipo, 
+				au_ip, 
+				au_titulo, 
+				au_descripcion, 
+				au_fecha,
+				au_id_usuario, 
+				au_id_proyecto
+			) VALUES (
+				1,
+				in_ip,
+				'REGISTRO DE NOSOTROS',
+				l_descripcion,
+				now(),
+				in_user,
+				1
+			);
+          
+		    --Imprime el resultado
+            resultado:= l_id; 
+		END IF;
+    END LOOP;
+    -- TERMINA RECORRIDO DE LOS REGISTROS
+
+    --return RAISE NOTICE 'Task completed sucessfully.';
+    EXCEPTION when others then 
+		 raise notice '% %', SQLERRM, SQLSTATE;
+		 resultado:= 'ERROR ' ||  SQLSTATE || ' -- '  || SQLERRM || ' -- ' ;
+
+ END;
+$BODY$;
+
+ALTER FUNCTION public.procedimiento_registrar_datos_nosotro(text, text, integer)
+    OWNER TO postgres;
+
+--ELIMINAR NOSOTROS (MISION Y VISION)
+-- FUNCTION: public.procedimiento_eliminar_datos_nosotros(text, text, integer)
+
+-- DROP FUNCTION public.procedimiento_eliminar_datos_nosotros(text, text, integer);
+
+CREATE OR REPLACE FUNCTION public.procedimiento_eliminar_datos_nosotros(
+	in_json text,
+	in_ip text,
+	in_user integer,
+	OUT resultado text)
+    RETURNS text
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+DECLARE
+   jp json; -- Variable que recibe el Json de entrada 
+   jp1 json; -- Variable para obtener las filas de JSON
+   r int; -- Variable que me permite obtener el numero de filas del JSON 
+	--JSON DATOS PERSONALES--
+   l_id bigint; --Id del registro guardado
+   l_id_nosotro integer; -- Variable para asignar id de empleado
+   l_mision text; --Variable para asignar el nombre del empleado
+   l_vision text; --Variable para asignar el apellido del empleado
+   
+   l_descripcion text;
+   l_nombre_usuario text;
+   l_validar_empleado text;
+   
+BEGIN 
+	--Consultar nombre del usuario que ingresa auditoria
+	l_nombre_usuario := (select usu_correo FROM public.tbl_usuarios u WHERE u.usu_id = in_user);
+	
+	
+   jp := in_json;
+   r := (select *  from Json_array_length(jp)) -1 ; -- OBTIENE EL NUMERO DE REGISTROS
+   ----------------------------------------------
+    -- INICIA EL RECORRIDO DE LOS REGISTROS
+    FOR v IN 0..r
+    LOOP
+      jp1:=(select jp::json->v ); -- OBTIENE EL JSON SEGÚN LA POSICIÓN
+      l_id_nosotro := (SELECT id_nosotro from json_to_record(jp1) as x(id_nosotro integer));
+	  
+	  --CONSULTAMOS A LA TABLA TBL_NOSOTROS DATOS DE LA MISION Y VISION
+	  l_mision :=(select nos_mision from public.tbl_nosotros n where n.nos_id=l_id_nosotro);
+	  l_vision :=(select nos_vision from public.tbl_nosotros n where n.nos_id=l_id_nosotro);
+	  
+		
+		 --PREGUNTAMOS SI EL JSON VIENE VACIO O NO
+	    IF (in_json is null) THEN
+        	resultado:= 0; 
+	    ELSE
+			--ELIMINA EN LA TABLA TBL_NOSOTROS POR ID
+			DELETE FROM public.tbl_nosotros n WHERE n.nos_id=l_id_nosotro;
+			
+			-- INSERTA EN LA TABLA AUDITORIA DEL PROYECTO
+            l_descripcion:= 'SE ELIMINO LA MISION '|| l_mision || ' Y LA VISION ' ||  l_vision || ' POR: ' || '' || l_nombre_usuario;
+            INSERT INTO public.tbl_auditorias (
+				au_id_tipo, 
+				au_ip, 
+				au_titulo, 
+				au_descripcion, 
+				au_fecha,
+				au_id_usuario, 
+				au_id_proyecto
+			) VALUES (
+				1,
+				in_ip,
+				'ELIMINACION DE EMPLEADO',
+				l_descripcion,
+				now(),
+				in_user,
+				1
+			);
+           
+		   --Imprime el resultado
+            resultado:= 'eliminado'; 
+		END IF;
+    END LOOP;
+    -- TERMINA RECORRIDO DE LOS REGISTROS
+
+    --return RAISE NOTICE 'Task completed sucessfully.';
+    EXCEPTION when others then 
+		 raise notice '% %', SQLERRM, SQLSTATE;
+		 resultado:= 'ERROR ' ||  SQLSTATE || ' -- '  || SQLERRM || ' -- ' ;
+
+ END;
+$BODY$;
+
+ALTER FUNCTION public.procedimiento_eliminar_datos_nosotros(text, text, integer)
+    OWNER TO postgres;
+
+
+--CONSULTAR NOSOTROS POR ID
+-- FUNCTION: public.cursor_listar_nosotros_id(integer)
+
+-- DROP FUNCTION public.cursor_listar_nosotros_id(integer);
+
+CREATE OR REPLACE FUNCTION public.cursor_listar_nosotros_id(
+	l_id integer)
+    RETURNS text
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+DECLARE 
+ cant  text;
+ resu  text;
+ mov   text ARRAY;
+ titles TEXT DEFAULT '';
+ contador integer;
+ resul   RECORD; 
+ resul2   RECORD;
+ resultado text;
+ resulJson text;
+ resulFinal text;
+ jsonResult json;
+ correo text;
+ DECLARE r record;
+ 	
+ cur_can CURSOR	FOR SELECT ( 
+	 '{
+	 "nos_id":' 					    || ' ' || n.nos_id 			    	|| ', 
+	 "nos_mision":' 					|| '"' || n.nos_mision 				|| '",
+	 "nos_vision":'						|| '"' || n.nos_vision				|| '"
+	 },') as  resu  
+		FROM public.tbl_nosotros n
+		WHERE n.nos_id=l_id
+		ORDER by n.nos_id;
+BEGIN
+    -- Abrir el cursor  
+	OPEN cur_can;
+   LOOP
+      FETCH cur_can INTO resul;
+	  EXIT WHEN NOT FOUND;
+	  
+	  if cant is null then
+	  	cant := '[' ||  resul.resu;
+	  else 
+	  	cant := cant || resul.resu;
+      end if;
+   END LOOP;
+  
+   -- Close the cursor
+   CLOSE cur_can;
+   contador := LENGTH(cant);
+  
+   --resulJson := '[' || substring (cant,1,contador-1) || ']';
+   --jsonResult:=resulJson;
+  -- resulFinal := (SELECT to_json(array_agg(t)) FROM (select * from json_populate_recordset(null::public.proyectos,jsonResult) A order by pro_id ASC) t);
+  -- raise notice 'Value: %', resulFinal;
+   RETURN  substring (cant, 1, contador-1) || ']';
+  
+END;
+$BODY$;
+
+ALTER FUNCTION public.cursor_listar_nosotros_id(integer)
+    OWNER TO postgres;
+
+
+--MODIFICAR DATOS DE NOSOTROS DE MISION Y VISION
+
+-- FUNCTION: public.procedimiento_modificar_datos_nosotro(text, text, integer)
+
+-- DROP FUNCTION public.procedimiento_modificar_datos_nosotro(text, text, integer);
+
+CREATE OR REPLACE FUNCTION public.procedimiento_modificar_datos_nosotro(
+	in_json text,
+	in_ip text,
+	in_user integer,
+	OUT resultado text)
+    RETURNS text
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+DECLARE
+   jp json; -- Variable que recibe el Json de entrada 
+   jp1 json; -- Variable para obtener las filas de JSON
+   r int; -- Variable que me permite obtener el numero de filas del JSON 
+	--JSON DATOS PERSONALES--
+   l_id bigint; --Id del registro guardado
+   l_mision text; -- Variable para asignar cedula
+   l_vision text; -- Variable para asignar nombre
+
+   l_descripcion text;
+   l_nombre_usuario text;
+     
+BEGIN 
+	--Consultar nombre del usuario que ingresa auditoria
+	l_nombre_usuario := (select usu_correo FROM public.tbl_usuarios u
+							WHERE u.usu_id = in_user);
+	
+   jp := in_json;
+   r := (select *  from Json_array_length(jp)) -1 ; -- OBTIENE EL NUMERO DE REGISTROS
+   ----------------------------------------------
+    -- INICIA EL RECORRIDO DE LOS REGISTROS
+    FOR v IN 0..r
+    LOOP
+      jp1:=(select jp::json->v ); -- OBTIENE EL JSON SEGÚN LA POSICIÓN
+	  l_id := (SELECT id from json_to_record(jp1) as x(id integer));
+      l_mision := (SELECT mision from json_to_record(jp1) as x(mision text));
+      l_vision := (SELECT vision from json_to_record(jp1) as x(vision text));
+	  
+		 --PREGUNTAMOS SI EL JSON VIENE VACIO O NO
+	    IF (in_json is null) THEN
+        	resultado:= 0; 
+	    ELSE
+			-- ACTUALIZA DATOS EN LA TABLA TBL_NOSOTROS
+			UPDATE public.tbl_nosotros
+				SET 
+				nos_mision=l_mision, 
+				nos_vision=l_vision
+			WHERE nos_id=l_id;
+				
+			-- INSERTA EN LA TABLA AUDITORIA DEL PROYECTO
+             l_descripcion:= 'SE ACTUALIZO LA MISION '|| l_mision || ' Y LA VISION ' ||  l_vision || ' POR: ' || '' || l_nombre_usuario;
+            INSERT INTO public.tbl_auditorias (
+				au_id_tipo, 
+				au_ip, 
+				au_titulo, 
+				au_descripcion, 
+				au_fecha,
+				au_id_usuario, 
+				au_id_proyecto
+			) VALUES (
+				1,
+				in_ip,
+				'ACTUALIZACION DE NOSOTROS',
+				l_descripcion,
+				now(),
+				in_user,
+				1
+			);
+           
+		    --Imprime el resultado
+            resultado:= l_id; 
+		END IF;
+    END LOOP;
+    -- TERMINA RECORRIDO DE LOS REGISTROS
+
+    --return RAISE NOTICE 'Task completed sucessfully.';
+    EXCEPTION when others then 
+		 raise notice '% %', SQLERRM, SQLSTATE;
+		 resultado:= 'ERROR ' ||  SQLSTATE || ' -- '  || SQLERRM || ' -- ' ;
+
+ END;
+$BODY$;
+
+ALTER FUNCTION public.procedimiento_modificar_datos_nosotro(text, text, integer)
+    OWNER TO postgres;
+
+
+
+
+
+

@@ -1,0 +1,294 @@
+.body-img{
+    background-image:url('/valex/assets/img/fondo.png') !important;
+}
+
+.width-t {
+    max-width: 100% !important;
+}
+
+.width-t-100 {
+    max-width: 100% !important;
+    padding: 0px 20px !important;
+}
+
+.width-t-100-n {
+    max-width: 60% !important;
+    padding: 0px 20px !important;
+}
+
+.tam-img-no {
+    /*width: 350px !important;*/
+    width: 100% !important;
+    height: 250px !important;
+}
+
+.tam-img-no-100 {
+    width: 1080px !important;
+    height: 570px !important;
+}
+
+.sha-no {
+    box-shadow: 0px 3px 13px 4px #ccc !important;
+    border-radius: 0px 35px !important;
+}
+
+.sha-no-index{
+    box-shadow: 0px 3px 8px 1.5px #ccc !important;
+    border-radius: 0px 35px !important;
+}
+
+.pad-no {
+    padding: 25px !important;
+}
+
+.btn-noticia {
+    padding: 8px 20px !important;
+    display: inline-block !important;
+    font-size: 15px !important;
+    line-height: 1.8 !important;
+    border: 1px solid #34abde !important;
+    background: #34abde !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    /* width: 100%;*/
+}
+
+.btn-noticia-100 {
+    padding: 8px 20px !important;
+    display: inline-block !important;
+    font-size: 15px !important;
+    line-height: 0.3 !important;
+    /* border: 1px solid #34abde !important; */
+    background: #fcfcfcb8 !important;
+    color: #084785 !important;
+    text-decoration: none !important;
+    /* width: 100%;*/
+}
+
+.margin-b-no {
+    margin-bottom: 25px !important;
+}
+
+.post-meta-user,
+.post-meta-tags {
+    padding: 0px;
+    margin-bottom: 5px;
+    line-height: 2.5;
+    font-size: 95%;
+    text-align: left;
+
+}
+
+.marg-bo{
+    /*margin-bottom: 10px !important;*/
+    padding: 25px !important;
+}
+
+
+.text-ali-titu {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-align: justify !important;
+    height: 50px !important;
+    color: #1f5294 !important;
+}
+
+.text-ali-des {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-align: justify !important;
+}
+
+.img-border-ra {
+    border-top-right-radius: 35px !important;
+    border: 1px solid #c4c4c4;
+}
+
+.btn-ri {
+    float: right;
+}
+
+.color-ti {
+    color: #1f5294 !important;
+    font-size: 18px !important;
+}
+
+.tam-men {
+    font-size: 17px !important;
+}
+
+.av-py-default-100 {
+    padding: 20px 0 !important;
+}
+
+@media screen and (min-width:567px) {
+    .card-wrapper {
+        display: flex !important;
+    }
+
+    .card {
+        margin: 0 .5em !important;
+        width: calc(100%/3) !important;
+    }
+
+    .image-wrapper {
+        height: 18vw !important;
+        margin: 0 auto;
+        /*display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;*/
+    }
+}
+
+@media screen and (max-width:567px) {
+    .card:not(:first-child) {
+        display: none;
+    }
+}
+
+
+
+.image-wrapper img {
+    width: 100% !important;
+    max-height: 100% !important;
+}
+
+button[type=submit]:hover,
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover,
+button[type=submit]:focus,
+button:focus,
+input[type="button"]:focus,
+input[type="reset"]:focus,
+input[type="submit"]:focus {
+    color: #212529;
+    background-color: rgb(0 0 0 / 0%);
+}
+
+.justify{
+    text-align: justify !important;
+}
+
+.align-ce{
+    text-align: center !important;
+}
+
+.flex{
+    display: flex !important;
+}
+
+.card-f {
+    margin: 0 .5em !important;
+}
+
+.marg-bot{
+    margin-bottom: 15px !important;
+}
+
+.color{
+    color: #212529 !important;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff !important;
+    background-color: #084785 !important;
+    width: 100% !important;
+}
+
+.nav-link {
+    display: block !important;
+    padding: 0.5rem 2rem !important;
+    color: #40b7ea !important;
+    text-decoration: none !important;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+
+.bor-ho{
+    padding: 0px !important;
+    border: 1px solid #e6e6e6 !important;
+}
+
+.padi{
+    padding: 10px !important;
+    /*bord
+    
+    er-right: solid #e6e6e6 !important;*/
+}
+
+.bor{
+    width: 100% !important;
+    padding: 5px !important;
+}
+
+.cargando{
+    text-align: center !important;
+}
+
+.ul-pad{
+    margin-bottom: 0rem !important;
+    vertical-align: middle !important;
+}
+
+.tpg-even .rt-holder {
+    display: flex !important;
+    height: auto !important;
+}
+
+.carousel-control-next-icon {
+    background-image: url("http://sgi.movilidadmanta.gob.ec/valex/assets/img/next.jpeg") !important;
+    margin-left: 140px !important;
+    margin-top: -13px !important;
+    width: 4rem !important;
+    height: 4rem !important;
+}
+
+.carousel-control-prev-icon {
+    background-image: url("http://sgi.movilidadmanta.gob.ec/valex/assets/img/back.jpeg") !important;
+    margin-right: 140px !important;
+    margin-top: -13px !important;
+    width: 4rem !important;
+    height: 4rem !important;
+}
+
+.color-fe{
+    color: #084785 !important;
+}
+
+.border-th-td{
+    border: 0px solid #fff !important;
+}
+
+.cargando-not-pag{
+    width: 100% !important; 
+    text-align: center !important;
+}
+
+.back-marg{
+    height: fit-content !important;
+    margin-top: 18% !important;
+}
+.color-des{
+    color: #40b7ea !important;
+}
+
+.btn-check:active+.btn-outline-danger, .btn-check:checked+.btn-outline-danger, .btn-outline-danger.active, .btn-outline-danger.dropdown-toggle.show, .btn-outline-danger:active {
+    color: #fff !important;
+    background-color: #34abde !important;
+    border-color: #34abde !important;
+}
+
+.btn-outline-danger:hover {
+    color: #fff !important;
+    background-color: #34abde !important;
+    border-color: #34abde !important;
+}
+
+.w{
+    width: 100% !important;
+}

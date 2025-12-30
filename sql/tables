@@ -1,0 +1,126 @@
+-- Table: public.tbl_usuarios
+
+-- DROP TABLE public.tbl_usuarios;
+
+CREATE TABLE public.tbl_usuarios
+(
+    usu_id integer NOT NULL DEFAULT nextval('seq_id_usuario'::regclass),
+    usu_correo text COLLATE pg_catalog."default",
+    usu_clave text COLLATE pg_catalog."default",
+    usu_id_tipo integer,
+    usu_id_usuario integer,
+    usu_id_empleado integer,
+    usu_fecha date,
+    usu_fecha_update date,
+    usu_estado text COLLATE pg_catalog."default",
+    CONSTRAINT tbl_usuarios_pkey PRIMARY KEY (usu_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.tbl_usuarios
+    OWNER to postgres;
+
+
+-- Table: public.tbl_departamentos
+
+-- DROP TABLE public.tbl_departamentos;
+
+CREATE TABLE public.tbl_departamentos
+(
+    dep_id integer NOT NULL DEFAULT nextval('seq_id_departamento'::regclass),
+    dep_departamento text COLLATE pg_catalog."default",
+    dep_fecha date,
+    dep_fecha_update date,
+    CONSTRAINT tbl_departamentos_pkey PRIMARY KEY (dep_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.tbl_departamentos
+    OWNER to postgres;
+
+    -- Table: public.tbl_auditorias
+
+-- DROP TABLE public.tbl_auditorias;
+
+CREATE TABLE public.tbl_auditorias
+(
+    au_id bigint NOT NULL DEFAULT nextval('seq_id_auditoria'::regclass),
+    au_id_tipo integer,
+    au_ip text COLLATE pg_catalog."default",
+    au_titulo text COLLATE pg_catalog."default",
+    au_descripcion text COLLATE pg_catalog."default",
+    au_fecha timestamp without time zone,
+    au_id_usuario integer,
+    au_id_proyecto integer,
+    CONSTRAINT pk_id_auditoria PRIMARY KEY (au_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.tbl_auditorias
+    OWNER to postgres;
+
+    -- Table: public.tbl_empleados
+
+-- DROP TABLE public.tbl_empleados;
+
+CREATE TABLE public.tbl_empleados
+(
+    emp_id integer NOT NULL DEFAULT nextval('seq_id_empleado'::regclass),
+    emp_cedula text COLLATE pg_catalog."default",
+    emp_nombre text COLLATE pg_catalog."default",
+    emp_apellido text COLLATE pg_catalog."default",
+    emp_id_perfil integer,
+    emp_id_departamento integer,
+    emp_tipo_contrato integer,
+    emp_telefono text COLLATE pg_catalog."default",
+    emp_remuneracion double precision,
+    emp_direccion text COLLATE pg_catalog."default",
+    emp_ruta_foto text COLLATE pg_catalog."default",
+    emp_observacion text COLLATE pg_catalog."default",
+    CONSTRAINT tbl_empleados_pkey PRIMARY KEY (emp_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.tbl_empleados
+    OWNER to postgres;
+
+    -- Table: public.tbl_perfiles
+
+-- DROP TABLE public.tbl_perfiles;
+
+CREATE TABLE public.tbl_perfiles
+(
+    per_id integer NOT NULL DEFAULT nextval('seq_id_perfil'::regclass),
+    per_perfil text COLLATE pg_catalog."default",
+    per_fecha date,
+    per_fecha_update date,
+    CONSTRAINT tbl_perfiles_pkey PRIMARY KEY (per_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.tbl_perfiles
+    OWNER to postgres;
+
+--TABLA NOSOTROS DE MISION Y VISION 
+-- Table: public.tbl_nosotros
+
+DROP TABLE public.tbl_nosotros;
+
+CREATE TABLE public.tbl_nosotros
+(
+    nos_id integer NOT NULL DEFAULT nextval('seq_id_nosotro'::regclass),
+    nos_mision text COLLATE pg_catalog."default",
+    nos_vision text COLLATE pg_catalog."default",
+    nos_ano text COLLATE pg_catalog."default",
+    CONSTRAINT tbl_nosotros_pkey PRIMARY KEY (nos_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.tbl_nosotros
+    OWNER to postgres;
